@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login in</title>
+    <!-- Primary Meta Tags -->
+    <title>Guess What Game</title>
+    <meta name="title" content="Guess What Game" />
+    <meta name="description"
+        content="Guess What will help your brain develop and enhance your critical thinking skills" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://metatags.io/" />
+    <meta property="og:title" content="Guess What Game" />
+    <meta property="og:description"
+        content="Guess What will help your brain develop and enhance your critical thinking skills" />
+    <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metatags.io/" />
+    <meta property="twitter:title" content="Guess What Game" />
+    <meta property="twitter:description"
+        content="Guess What will help your brain develop and enhance your critical thinking skills" />
+    <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+    <link rel="stylesheet" href="./css/style.css">
+    
+</head>
+
+<body class="bg-color">
+    <!-- //register -->
+    <div class="container" id="register">
+        <div class=" w-100 m-auto">
+            <div class="row ">
+                <div class="d-flex justify-content-center align-items-center min-vh-100">
+                    <div class="col-md-4 col-10">
+                        <!-- //form login  -->
+                        <form class="px-4 py-3 rounded-3 form-decoration" id="formRegister">
+                            <h1 class="h3 mb-4 fw-normal">Please register</h1>
+                            <div class="form-floating mb-3 ">
+                                <input type="text" name="loginName" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com custom-bg">
+                                <label for="floatingInput text-" >Your full name</label>
+                            </div>
+                            <div class="form-floating mb-3 ">
+                                <input type="email" name="loginEmail" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com">
+                                <label for="floatingInput" >Email address</label>
+                            </div>
+                            <div class="form-floating mb-3 ">
+                                <input type="password" name="loginPassword" class="form-control" id="floatingPassword"
+                                    placeholder="Password">
+                                <label for="floatingPassword" >Password</label>
+                            </div>
+
+                            <button class="w-100 p-2 btn-decoration btn text-light" type="submit">Sign up</button>
+
+
+                            <button type="button" class="btn border-0 link-hover" id="toLoginBtn"><small
+                                    class="text-center d-block text-decoration-underline  ">I
+                                    already have an account</small></button>
+
+                            <p class="mt-5 mb-3 ">@gueswhatgame</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- //login  -->
+    <div class="container d-none" id="login">
+        <div class=" w-100 m-auto">
+            <div class="row ">
+                <div class="d-flex justify-content-center align-items-center min-vh-100">
+                    <div class="col-md-4 col-10">
+                        <!-- //form login  -->
+                        <form class="px-4 py-3 rounded-3 form-decoration" id="formLogin">
+                            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                            <div class="form-floating mb-3">
+                                <input id="email" type="email" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input id="password" type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <button class="btn-decoration btn text-light w-100 py-2" type="submit">Sign in</button>
+
+                            <button type="button" class="btn border-0 " id="toRegBtn"><small
+                                    class="text-center d-block text-decoration-underline text-light link-hover">Create a new
+                                    account</small></button>
+
+                                    <small id="loginNoti" class=" d-block m-2 d-none text-danger">This account doesn't exsit</small>
+                            <p class="mt-5 mb-3 ">@gueswhatgame</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+</html>

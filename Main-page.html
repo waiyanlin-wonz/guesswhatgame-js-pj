@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess What</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./css/app.css">
+
+<body>
+
+  <!-- //nav bar  -->
+  <nav class="navbar navbar-expand-lg nav-decoration sticky-top m-50-bt">
+    <div class="container">
+      <a class="navbar-brand text-light" href="#">GuessWhat ???
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon text-bg-dark text-white"></span> -->
+        <i class="bi bi-three-dots-vertical text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Levels
+            </a>
+            <ul class="dropdown-menu p-1">
+              <li class="p-1"><button type="button" class="btn-decoration text-light btn w-100 h-100 text-light"
+                  id="easyBtn">Easy</button></li>
+              <li class="p-1"><button type="button" class="btn-decoration text-light  btn w-100 h-100 text-light"
+                  id="mediumBtn">Medium</button>
+              </li>
+              <li class="p-1"><button type="button" class="btn-decoration text-light btn w-100 h-100 text-light"
+                  id="hardBtn">Hard</button></li>
+            </ul>
+          </li>
+        </ul>
+        <div>
+          <button class="btn-decoration text-light btn text-light" id="logOut" type="button">Log Out</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container fs-5 mb-3">
+    <div class=" wd-200 text-center rounded-3 ms-auto p-1">
+      <span class="text-white">Your Points : </span> <span class="count text-white">0</span>
+    </div>
+  </div>
+
+  <!-- //welcome page  -->
+  <div class="d-flex justify-content-center m-50-top mb-3">
+    <div class="toast p-3" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Lets our brain work!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        <p> <span id="intoName"></span> <span>welcome from GuessWhat!</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- //audio  -->
+  <audio src="./audio/mixkit-fantasy-game-success-notification-270.wav" id="audioWin"></audio>
+  <audio src="./audio/mixkit-losing-bleeps-2026.wav" id="audioLose"></audio>
+  <audio src="./audio/mixkit-horror-lose-2028.wav" id="audioTotalLose"></audio>
+
+
+  <!-- //easy  -->
+  <div class="container m-50-top" id="easy">
+    <h1 class="text-light mb-2" id="easyHeader">Easy</h1>
+    <div class="row d-flex justify-content-center">
+
+      <!-- easy1 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -1</span>
+            <button class="btn btn-decoration text-light m-1 " id="easyOnePlay">Play!</button>
+          </div>
+          <div class="card-body d-flex flex-column ">
+            <h3 id="easyOneQues"> </h3>
+            <small id="easyOneHint"> </small>
+            <textarea name="" id="easyOneAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <button id="speechToText" class="btn btn-outline-dark m-3 ms-auto"><i class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="easyOneNoti">Start Guessing</span>
+              <span class="fs-3 ms-3 d-none" id="easyOneCorrectAnswer">?</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="easyOneScore"></span>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="easyOneCheck" disabled>Answer</button>
+              <button class="btn btn-decoration text-light m-1 d-none" id="easyOnePlayAgin">Play Again!</button>
+            </div>
+          </div>
+
+          <div id="easyModalOne"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="easyOneStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- easy2 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -2</span>
+            <button class="btn btn-decoration text-light m-1 " id="easyTwoPlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="easyTwoQues"> </h3> <!--Question -->
+            <small id="easyTwoHint"> </small> <!--Hint -->
+            <textarea name="" id="easyTwoAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexteasyTwo" class="btn btn-outline-dark m-3 ms-auto"><i class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="easyTwoNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="easyTwoCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="easyTwoScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="easyTwoCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="easyTwoPlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="easyModalTwo"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="easyTwoStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModaleasyTwo"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openeasyTwo" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- easy3 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -3</span>
+            <button class="btn btn-decoration text-light m-1 " id="easyThreePlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="easyThreeQues"> </h3> <!--Question -->
+            <small id="easyThreeHint"> </small> <!--Hint -->
+            <textarea name="" id="easyThreeAnswer" cols="60" rows=" 3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexteasyThree" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="easyThreeNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="easyThreeCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="easyThreeScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="easyThreeCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="easyThreePlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="easyModalThree"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="easyThreeStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModaleasyThree"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openeasyThree" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- easy4 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -4</span>
+            <button class="btn btn-decoration text-light m-1 " id="easyFourPlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="easyFourQues"> </h3> <!--Question -->
+            <small id="easyFourHint"> </small> <!--Hint -->
+            <textarea name="" id="easyFourAnswer" cols="60" rows="3 " class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexteasyFour" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="easyFourNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="easyFourCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="easyFourScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="easyFourCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="easyFourPlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="easyModalFour"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="easyFourStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModaleasyFour"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openeasyFour" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- eay5 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -5</span>
+            <button class="btn btn-decoration text-light m-1 " id="easyFivePlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="easyFiveQues"> </h3> <!--Question -->
+            <small id="easyFiveHint"> </small> <!--Hint -->
+            <textarea name="" id="easyFiveAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexteasyFive" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="easyFiveNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="easyFiveCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="easyFiveScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="easyFiveCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="easyFivePlayAgin">Play Again!</button>
+              <!--playagain -->
+              <!--To medium after answer all ques -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="toMedium">To Medium</button>
+
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="easyModalFive"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="easyFiveStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModaleasyFive"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openeasyFive" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- // medium -->
+  <div class="container m-50-top d-none" id="medium">
+    <h1 class="m-50-top text-light">Medium</h1>
+    <div class="row d-flex justify-content-center">
+
+      <!-- medium1 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -1</span>
+            <button class="btn btn-decoration text-light m-1 " id="mediumOnePlay">Play!</button>
+          </div>
+          <div class="card-body d-flex flex-column ">
+            <h3 id="mediumOneQues"> </h3>
+            <small id="mediumOneHint"> </small>
+            <textarea name="" id="mediumOneAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <button id="speechToTextmedium" class="btn btn-outline-dark m-3 ms-auto"><i class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="mediumOneNoti">Start Guessing</span>
+              <span class="fs-3 ms-3 d-none" id="mediumOneCorrectAnswer">?</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="mediumOneScore"></span>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="mediumOneCheck" disabled>Answer</button>
+              <button class="btn btn-decoration text-light m-1 d-none" id="mediumOnePlayAgin">Play Again!</button>
+            </div>
+          </div>
+
+          <div id="mediumModalOne"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="mediumOneStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalmediumOne"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openmediumOne" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- medium2 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -2</span>
+            <button class="btn btn-decoration text-light m-1 " id="mediumTwoPlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="mediumTwoQues"> </h3> <!--Question -->
+            <small id="mediumTwoHint"> </small> <!--Hint -->
+            <textarea name="" id="mediumTwoAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTextmediumTwo" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="mediumTwoNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="mediumTwoCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="mediumTwoScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="mediumTwoCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="mediumTwoPlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="mediumModalTwo"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="mediumTwoStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalmediumTwo"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openmediumTwo" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- medium3 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -3</span>
+            <button class="btn btn-decoration text-light m-1 " id="mediumThreePlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="mediumThreeQues"> </h3> <!--Question -->
+            <small id="mediumThreeHint"> </small> <!--Hint -->
+            <textarea name="" id="mediumThreeAnswer" cols="60" rows class="textarea-decoration"="3"></textarea>
+            <!--answer -->
+            <button id="speechToTextmediumThree" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="mediumThreeNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="mediumThreeCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="mediumThreeScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="mediumThreeCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="mediumThreePlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="mediumModalThree"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="mediumThreeStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalmediumThree"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openmediumThree" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- medium4 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -4</span>
+            <button class="btn btn-decoration text-light m-1 " id="mediumFourPlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="mediumFourQues"> </h3> <!--Question -->
+            <small id="mediumFourHint"> </small> <!--Hint -->
+            <textarea name="" id="mediumFourAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTextmediumFour" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="mediumFourNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="mediumFourCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="mediumFourScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="mediumFourCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="mediumFourPlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="mediumModalFour"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="mediumFourStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalmediumFour"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openmediumFour" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- medium5 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -5</span>
+            <button class="btn btn-decoration text-light m-1 " id="mediumFivePlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="mediumFiveQues"> </h3> <!--Question -->
+            <small id="mediumFiveHint"> </small> <!--Hint -->
+            <textarea name="" id="mediumFiveAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTextmediumFive" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="mediumFiveNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="mediumFiveCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="mediumFiveScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="mediumFiveCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="mediumFivePlayAgin">Play Again!</button>
+              <!--playagain -->
+              <!--To hard after answer all ques -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="toHard">To hard</button>
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="mediumModalFive"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="mediumFiveStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalmediumFive"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openmediumFive" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- // hard  -->
+  <div class="container m-50-top d-none" id="hard">
+    <h1 class="m-50-top text-light mb-2">Hard</h1>
+    <div class="row d-flex justify-content-center">
+
+      <!-- hard1 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -1</span>
+            <button class="btn btn-decoration text-light m-1 " id="hardOnePlay">Play!</button>
+          </div>
+          <div class="card-body d-flex flex-column ">
+            <h3 id="hardOneQues"> </h3>
+            <small id="hardOneHint"> </small>
+            <textarea name="" id="hardOneAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <button id="speechToTexthard" class="btn btn-outline-dark m-3 ms-auto"><i class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="hardOneNoti">Start Guessing</span>
+              <span class="fs-3 ms-3 d-none" id="hardOneCorrectAnswer">?</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="hardOneScore"></span>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="hardOneCheck" disabled>Answer</button>
+              <button class="btn btn-decoration text-light m-1 d-none" id="hardOnePlayAgin">Play Again!</button>
+            </div>
+          </div>
+
+          <div id="hardModalOne"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="hardOneStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalhardOne"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openhardOne" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- hard2 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -2</span>
+            <button class="btn btn-decoration text-light m-1 " id="hardTwoPlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="hardTwoQues"> </h3> <!--Question -->
+            <small id="hardTwoHint"> </small> <!--Hint -->
+            <textarea name="" id="hardTwoAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexthardTwo" class="btn btn-outline-dark m-3 ms-auto"><i class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="hardTwoNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="hardTwoCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="hardTwoScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="hardTwoCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="hardTwoPlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="hardModalTwo"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="hardTwoStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalhardTwo"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openhardTwo" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- hard3 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -3</span>
+            <button class="btn btn-decoration text-light m-1 " id="hardThreePlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="hardThreeQues"> </h3> <!--Question -->
+            <small id="hardThreeHint"> </small> <!--Hint -->
+            <textarea name="" id="hardThreeAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexthardThree" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="hardThreeNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="hardThreeCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="hardThreeScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="hardThreeCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="hardThreePlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="hardModalThree"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="hardThreeStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalhardThree"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openhardThree" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- hard4 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -4</span>
+            <button class="btn btn-decoration text-light m-1 " id="hardFourPlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="hardFourQues"> </h3> <!--Question -->
+            <small id="hardFourHint"> </small> <!--Hint -->
+            <textarea name="" id="hardFourAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexthardFour" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="hardFourNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="hardFourCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="hardFourScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="hardFourCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="hardFourPlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="hardModalFour"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="hardFourStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalhardFour"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openhardFour" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- hard5 -->
+      <div class="col-md-6 col-10 d-flex mb-3">
+        <div class="card rounded-4">
+          <!-- header  -->
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Question -5</span>
+            <button class="btn btn-decoration text-light m-1 " id="hardFivePlay">Play!</button>
+          </div>
+          <!-- body  -->
+          <div class="card-body d-flex flex-column ">
+            <h3 id="hardFiveQues"> </h3> <!--Question -->
+            <small id="hardFiveHint"> </small> <!--Hint -->
+            <textarea name="" id="hardFiveAnswer" cols="60" rows="3" class="textarea-decoration"></textarea>
+            <!--answer -->
+            <button id="speechToTexthardFive" class="btn btn-outline-dark m-3 ms-auto"><i
+                class="bi bi-mic"></i></button>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span class="fs-4 ms-3" id="hardFiveNoti">Start Guessing</span> <!--Guessing -->
+              <span class="fs-3 ms-3 d-none" id="hardFiveCorrectAnswer">?</span> <!--CorrectAnswer -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center"><span class="me-2">score :</span>
+              <span id="hardFiveScore"></span> <!--score -->
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-decoration text-light m-1" id="hardFiveCheck" disabled>Answer</button>
+              <!--Check answer -->
+              <button class="btn btn-decoration text-light m-1 d-none" id="hardFivePlayAgin">Play Again!</button>
+              <!--playagain -->
+            </div>
+          </div>
+
+          <!-- modal  -->
+          <div id="hardModalFive"
+            class="d-none position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center ">
+            <div class="">
+              <button id="hardFiveStartAgin" class="btn btn-info text-white">Start Again</button>
+            </div>
+          </div>
+
+          <!-- unlock Modal -->
+          <div id="unloackModalhardFive"
+            class="position-absolute w-100 top-0 end-0 h-100 bg-black bg-opacity-50 d-flex justify-content-center align-items-center rounded-4 ">
+            <div class="">
+              <button class="btn open-btn-decoration text-white" id="openhardFive" disabled>Open</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="finalModal" class="abs d-none">
+    <div class="modal-abs">
+      <div class="card w-70 d-flex rounded-2 p-0 bg-black-50">
+        <p class="m-5 mb-3 text-center text-bg-dark text-white fs-3">Congratulations, <br> You have passed all levels
+          successfullly.
+          <br> Very Amazing!!!
+        </p>
+        <img class="mx-auto mb-3" src="./congrats.gif" style="width: 100px; height: 100px;" alt="" srcset="">
+        <button class="btn btn-decoration text-light m-3 mt-0 w-25 mx-auto" id="closeModal">close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/easy-page.js"></script>
+  <script src="./js/medium.js"></script>
+  <script src="./js/hard.js"></script>
+</body>
+
+</html>
