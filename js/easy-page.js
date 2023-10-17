@@ -124,7 +124,7 @@ const arrQues={
           "id": 5,
           "question": "The Capital of the India is ----?",
           "hint": "started with N",
-          "answer": "New Dalhi"
+          "answer": "New Delhi"
       }
   ],
   "easy3": [
