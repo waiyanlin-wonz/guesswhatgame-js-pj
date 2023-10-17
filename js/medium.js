@@ -16,7 +16,7 @@ const arrQuesMedium = {
       id: 3,
       question: "The President of South Korea in 2023 ?",
       hint: "Starts with Yoon ",
-      answer: "Yoon Sok Yeol",
+      answer: "Yoon Suk Yeol",
     },
     {
       id: 4,

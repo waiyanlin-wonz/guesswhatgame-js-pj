@@ -132,7 +132,7 @@ const arrQues={
           "id": 1,
           "question":"The Long Term of RAM is  ----?",
           "hint": "Temporary memory bank",
-          "answer": "RAndom Access Memory"
+          "answer": "Random Access Memory"
       },
       {
           "id": 2,
